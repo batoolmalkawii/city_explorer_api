@@ -15,7 +15,6 @@ app.get('/', (request, response)=>{
 
 app.get('/location', (request, response)=>{
     const city = request.query.city;
-    let locationData = locationData[0];
     let location = new Location(city, locationData);
     });
     response.json(location);
@@ -37,9 +36,9 @@ app.get('/weather', (request, response)=>{
 
 function Location(city, locationData){
     this.search_query = city;
-    this.formatted_query = locationData.display_name;
-    this.latitude = locationData.lat;
-    this.longitude = locationData.lon;
+    this.formatted_query = locationData[0].display_name;
+    this.latitude = locationData[0].lat;
+    this.longitude = locationData[0].lon;
 }
 
 function Weather(description, dateTime){
