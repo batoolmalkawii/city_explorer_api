@@ -15,9 +15,8 @@ app.get('/', (request, response)=>{
 
 app.get('/location', (request, response)=>{
     const city = request.query.city;
-    let location;
-    locationData.forEach(locationData=>{
-        location = new Location(city, locationData);
+    let locationData = locationData[0];
+    let location = new Location(city, locationData);
     });
     response.json(location);
     handleError(response, location);
