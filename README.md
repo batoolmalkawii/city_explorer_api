@@ -1,70 +1,51 @@
 # city_explorer_api
 
 **Author**: Batool Malkawi
-**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+**Version**: 1.0.0 
 
-## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
 
-## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+Number and name of feature: 1. Repository Set Up
+Estimate of time needed to complete: 15min
 
-## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+Start time: 2:00pm
 
-## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
+Finish time: 2:10pm
 
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource.
-
-## Credits and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
--->
-
-<!-- -->
-Number and name of feature: ________________________________
-
-Estimate of time needed to complete: _____
-
-Start time: _____
-
-Finish time: _____
-
-Actual time needed to complete: _____
+Actual time needed to complete: 10min
 <!-- -->
 
 <!-- -->
-Number and name of feature: ________________________________
+Number and name of feature: 2. Location
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 15min
 
-Start time: _____
+Start time: 2:10pm
 
-Finish time: _____
+Finish time: 2:40pm
 
-Actual time needed to complete: _____
+Actual time needed to complete: 30min
 <!-- -->
 
 <!-- -->
-Number and name of feature: ________________________________
+Number and name of feature: 2. Weather
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 15min
 
-Start time: _____
+Start time: 2:40pm
 
-Finish time: _____
+Finish time: 2:55pm.
 
-Actual time needed to complete: _____
+Actual time needed to complete: 15min
 <!-- -->
 
 <!-- -->
-Number and name of feature: ________________________________
+Number and name of feature: 3. Error Handling
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 10min
 
-Start time: _____
+Start time: 2:55pm
 
-Finish time: _____
+Finish time: 3:05pm
 
-Actual time needed to complete: _____
+Actual time needed to complete: 10min
 <!-- -->
