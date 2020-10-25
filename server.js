@@ -23,7 +23,7 @@ app.get('/location', (request, response)=>{
     handleError(response, location);
 });
 
-app.get('/weather', (reqeust, response)=>{
+app.get('/weather', (request, response)=>{
     let weather = [];
     weatherData.data.forEach(weatherData=>{
         let description = weatherData.description;
@@ -42,7 +42,7 @@ function Location(city, locationData){
 }
 
 function Weather(description, dateTime){
-    this.description = description;
+    this.forecast = description;
     this.dateTime = dateTime;
 }
 
