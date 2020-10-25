@@ -1,56 +1,62 @@
 'use strict';
 
-// Defining Application Dependencies 
 const express = require('express');
-const cors = require('cors')
+const app = express();
+const PORT = process.env.PORT || 3000;
+const locationData = require('./data/location.json');
+const weatherData = require ('./data/weather.json');
+const cors = require('cors');
+app.use(cors());
 require('dotenv').config()
 
-
-const PORT = process.env.PORT || 3000;
-
-console.log(PORT);
-
-const app = express();
-app.use(cors());
-
-// Routes
-app.get('/', (reqeust, response)=>{
-    response.send('Home Page Welcome to express');
+app.get('/', (request, response)=>{
+    response.status(200).send('Hello! you are in the Home page.');
 });
 
 app.get('/location', (request, response)=>{
-    const locationData = require('./data/location.json');
     const city = request.query.city;
     let location;
     locationData.forEach(locationData=>{
         location = new Location(city, locationData);
     });
     response.json(location);
+    handleError(response, location);
 });
 
 app.get('/weather', (reqeust, response)=>{
-    response.send('Weather Welcome to express');
+    let weather = [];
+    weatherData.data.forEach(weatherData=>{
+        let description = weatherData.description;
+        let dateTime = weatherData.datetime;
+        weather.push(new weather(description, dateTime))
+    });
+    response.json(weather);
+    handleError(response, weather);
 });
-app.get('/movies', (reqeust, response)=>{
-    response.send('Movies Welcome to express');
-});
-app.get('/yelp', (reqeust, response)=>{
-    response.send('Yelp Welcome to express');
-});
-app.get('/trails', (reqeust, response)=>{
-    response.send('Trails Welcome to express');
-});
-app.use('*', (request, resp)=>{
-    resp.status(404).send('Not found');
-})
 
-
-// Constructor
 function Location(city, locationData){
-    this.search_query=city;
-    this.formatted_query=locationData.display_name;
+    this.search_query = city;
+    this.formatted_query = locationData.display_name;
     this.latitude = locationData.lat;
     this.longitude = locationData.lon;
 }
+
+function Weather(description, dateTime){
+    this.description = description;
+    this.dateTime = dateTime;
+}
+
+function handleError(response, data){
+    if(response.status == 200){
+        response.status(200).send(data);
+    }
+    else{
+        response.status(500).send('Some Error Occurred')
+    }
+}
+
+app.use('*', (request, response)=>{
+    response.status(404).send('Not found');
+})
 
 app.listen(PORT, ()=> console.log(`App is listening on port ${PORT}`));
