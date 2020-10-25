@@ -26,8 +26,8 @@ app.get('/location', (request, response)=>{
 app.get('/weather', (request, response)=>{
     let weather = [];
     weatherData.data.forEach(weatherData=>{
-        let description = weatherData.description;
-        let dateTime = weatherData.datetime;
+        let description = weatherData.data.weather.description;
+        let dateTime = weatherData.data.datetime;
         weather.push(new Weather(description, dateTime))
     });
     response.json(weather);
