@@ -28,7 +28,7 @@ app.get('/weather', (request, response)=>{
     weatherData.data.forEach(weatherData=>{
         let description = weatherData.description;
         let dateTime = weatherData.datetime;
-        weather.push(new weather(description, dateTime))
+        weather.push(new Weather(description, dateTime))
     });
     response.json(weather);
     handleError(response, weather);
