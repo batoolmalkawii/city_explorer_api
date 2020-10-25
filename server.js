@@ -28,6 +28,18 @@ app.get('/location', (request, response)=>{
     response.json(location);
 });
 
+app.get('/weather', (reqeust, response)=>{
+    response.send('Weather Welcome to express');
+});
+app.get('/movies', (reqeust, response)=>{
+    response.send('Movies Welcome to express');
+});
+app.get('/yelp', (reqeust, response)=>{
+    response.send('Yelp Welcome to express');
+});
+app.get('/trails', (reqeust, response)=>{
+    response.send('Trails Welcome to express');
+});
 app.use('*', (request, resp)=>{
     resp.status(404).send('Not found');
 })
