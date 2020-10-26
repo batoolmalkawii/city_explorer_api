@@ -49,12 +49,14 @@ function getWeather(request, response) {
     const city = request.query.search_query;
     const longitude = request.query.longitude;
     const latitude = request.query.latitude;
-    const url = `https://api.weatherbit.io/v2.0/forecast/daily?city=${city}&lat=${latitude}&lon=${longitude}&key=${WEATHER_API_KEY}`;;
-    superagent.get('url').then(weatherData => {
-        const weatherArray = weatherData.body.data.map((value, index) => {
-            return(new Weather(value));
-        });
-        response.json(weatherArray);
+    console.log(city);
+    const url = `https://api.weatherbit.io/v2.0/forecast/daily?city=${city}&lat=${latitude}&lon=${longitude}&key=${WEATHER_API_KEY}`;
+    let weather = [];
+    superagent.get(url).then(weatherData => {
+      weather = weatherData.body.data.map((value) => {
+        return (new Weather(value));
+      });
+      response.json(weather);
     }).catch(() => {
         response.status(500).send('Something went wrong');
       })
