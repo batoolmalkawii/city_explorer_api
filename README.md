@@ -27,7 +27,7 @@ Actual time needed to complete: 30min
 <!-- -->
 
 <!-- -->
-Number and name of feature: 2. Weather
+Number and name of feature: 3. Weather
 
 Estimate of time needed to complete: 15min
 
@@ -39,7 +39,7 @@ Actual time needed to complete: 15min
 <!-- -->
 
 <!-- -->
-Number and name of feature: 3. Error Handling
+Number and name of feature: 4. Error Handling
 
 Estimate of time needed to complete: 10min
 
@@ -48,4 +48,50 @@ Start time: 2:55pm
 Finish time: 3:05pm
 
 Actual time needed to complete: 10min
+<!-- -->
+
+Number and name of feature: 1. Data Formatting
+Estimate of time needed to complete: 15min
+
+Start time: 2:00pm
+
+Finish time: 2:10pm
+
+Actual time needed to complete: 10min
+<!-- -->
+
+<!-- -->
+Number and name of feature: 2. Location
+
+Estimate of time needed to complete: 30min
+
+Start time: 2:10pm
+
+Finish time: 3:15pm
+
+Actual time needed to complete: 1h 5min
+<!-- -->
+
+<!-- -->
+Number and name of feature: 3. Weather
+
+Estimate of time needed to complete: 30min
+
+Start time: 3:15pm
+
+Finish time: 4:15pm.
+
+Actual time needed to complete: 1h
+<!-- -->
+
+<!-- -->
+Number and name of feature: 3. Trails
+
+Estimate of time needed to complete: 1h
+
+Start time: 8:30pm
+
+Finish time: 9:00pm
+
+Actual time needed to complete: 30min
 <!-- -->
