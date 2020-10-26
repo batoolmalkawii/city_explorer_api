@@ -41,8 +41,8 @@ function Trail(trailsData){
     this.trail_url=trailsData.url;
     this.conditions=trailsData.conditionStatus;
     let conditionsInfo = trailsData.conditionDate.split(' ');
-    this.date=conditionsInfo[0];
-    this.time=conditionsInfo[1];
+    this.condition_date=conditionsInfo[0];
+    this.condition_time=conditionsInfo[1];
   
   }
 
@@ -58,7 +58,7 @@ function getLocation(request, response){
       location = new Location(city, locationData.body[0]);
       response.json(location);
     }).catch(() => {
-      response.status(500).send('Something went wrong');
+      response.status(500).send('Something Went Wrong');
     })
   }
 
@@ -74,7 +74,7 @@ function getWeather(request, response) {
       });
       response.json(weather);
     }).catch(() => {
-        response.status(500).send('Something went wrong');
+        response.status(500).send('Something Went Wrong');
       })
 }
 
@@ -89,7 +89,7 @@ function getTrails(request, response){
       });
       response.json(trails);
     }).catch(() => {
-      response.status(500).send('Something went wrong');
+      response.status(500).send('Something Went Wrong');
     })
   }
 
