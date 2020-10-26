@@ -2,6 +2,7 @@
 
 const express = require('express');
 const app = express();
+require('dotenv').config()
 const PORT = process.env.PORT || 3000;
 const GEOCODE_API_KEY = process.env.GEOCODE_API_KEY;
 //const locationData = require('./data/location.json');
@@ -9,7 +10,6 @@ const weatherData = require('./data/weather.json');
 const cors = require('cors');
 app.use(cors());
 const superagent = require('superagent');
-require('dotenv').config()
 
 app.get('/', homePage);
 app.get('/location', getLocation);
@@ -32,18 +32,17 @@ function homePage(request, response) {
     response.status(200).send('Hello! you are in the Home page.');
 }
 
-function getLocation(request, response) {
+function getLocation(request, response){
     const city = request.query.city;
     const url = `https://eu1.locationiq.com/v1/search.php?key=${GEOCODE_API_KEY}&q=${city}&format=json`;
     let location;
-    superagent.get(url).then(locationData=> {
-        location = new Location(city, locationData.body[0]);
-        response.json(location);
-        console.log(location);
+    superagent.get(url).then(locationData => {
+      location = new Location(city, locationData.body[0]);
+      response.json(location);
     }).catch(() => {
-        response.status(500).send('Something went wrong!');
-    });
-}
+      response.status(500).send('Something went wrong');
+    })
+  }
 
 function getWeather(request, response) {
     const weatherArray = weatherData.data.map((value, index) => {
