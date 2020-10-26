@@ -5,8 +5,9 @@ const app = express();
 require('dotenv').config()
 const PORT = process.env.PORT || 3000;
 const GEOCODE_API_KEY = process.env.GEOCODE_API_KEY;
+const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 //const locationData = require('./data/location.json');
-const weatherData = require('./data/weather.json');
+//const weatherData = require('./data/weather.json');
 const cors = require('cors');
 app.use(cors());
 const superagent = require('superagent');
@@ -23,9 +24,9 @@ function Location(city, locationData) {
     this.longitude = locationData.lon;
 }
 
-function Weather(description, dateTime) {
-    this.forecast = description;
-    this.dateTime = dateTime;
+function Weather(weatherData) {
+    this.forecast = weatherData.weather.description;
+    this.dateTime = weatherData.dateTime;
 }
 
 function homePage(request, response) {
@@ -45,11 +46,18 @@ function getLocation(request, response){
   }
 
 function getWeather(request, response) {
-    const weatherArray = weatherData.data.map((value, index) => {
-        return(new Weather(value.weather.description, value.datetime));
-    });
-    response.json(weatherArray);
-    handleError(response, weatherArray);
+    const city = request.query.search_query;
+    const longitude = request.query.longitude;
+    const latitude = request.query.latitude;
+    const url = `https://api.weatherbit.io/v2.0/forecast/daily?city=${city}&lat=${latitude}&lon=${longitude}&key=${WEATHER_API_KEY}`;;
+    superagent.get('url').then(weatherData => {
+        const weatherArray = weatherData.body.data.map((value, index) => {
+            return(new Weather(value));
+        });
+        response.json(weatherArray);
+    }).catch(() => {
+        response.status(500).send('Something went wrong');
+      })
 }
 
 function getError (request, response) {
