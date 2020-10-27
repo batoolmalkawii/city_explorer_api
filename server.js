@@ -4,7 +4,6 @@ const express = require('express');
 const app = express();
 require('dotenv').config()
 const cors = require('cors');
-app.use(cors());
 const PORT = process.env.PORT || 3000;
 const GEOCODE_API_KEY = process.env.GEOCODE_API_KEY;
 const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
@@ -26,6 +25,7 @@ app.get('/location', getLocation);
 app.get('/weather', getWeather);
 app.get('/trails', getTrails);
 app.use('*', getError);
+app.use(cors());
 
 function Location(city, locationData) {
   this.search_query = city;
