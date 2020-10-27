@@ -15,23 +15,6 @@ const pg = require('pg');
 const { request, response } = require('express');
 const client = new pg.Client(DATABASE);
 
-app.get('/get-people', (request, response) => {
-  const selectPeople = 'SELECT * FROM city_explorer_info;';
-  client.query(selectPeople).then(result => {
-    response.status(200).json(result.rows);
-  })
-});
-
-app.get('/add-person', (request, response => {
-  const firstName = request.query.first_name;
-  const lastName = request.query.last_name;
-  const newValues = 'INSERT INTO people_info (first_name, last_name) VALUES ($1, $2);';
-  const safeValues = [firstName, lastName];
-  client.query(newValues, safeValues).then(result => {
-    response.status(200).json(result.rows);
-  })
-}));
-
 client.connect().then(() => {
   app.listen(PORT, () => console.log(`App is listening on port ${PORT}`));
 }).catch(error => {
