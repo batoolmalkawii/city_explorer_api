@@ -85,7 +85,7 @@ Actual time needed to complete: 1h
 <!-- -->
 
 <!-- -->
-Number and name of feature: 3. Trails
+Number and name of feature: 4. Trails
 
 Estimate of time needed to complete: 1h
 
@@ -94,4 +94,39 @@ Start time: 8:30pm
 Finish time: 9:00pm
 
 Actual time needed to complete: 30min
+<!-- -->
+<!-- -->
+
+Number and name of feature: 1. Database
+Estimate of time needed to complete: 15min
+
+Start time: 2:00pm
+
+Finish time: 2:30pm
+
+Actual time needed to complete: 30min
+<!-- -->
+
+<!-- -->
+Number and name of feature: 2. Server
+
+Estimate of time needed to complete: 15min
+
+Start time: 2:30pm
+
+Finish time: 3:45pm
+
+Actual time needed to complete: 15min
+<!-- -->
+
+<!-- -->
+Number and name of feature: 3. Deploy
+
+Estimate of time needed to complete: 15min
+
+Start time: 3:45pm
+
+Finish time: 4:00pm.
+
+Actual time needed to complete: 15min
 <!-- -->
