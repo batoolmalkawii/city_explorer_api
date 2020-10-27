@@ -8,6 +8,8 @@ const GEOCODE_API_KEY = process.env.GEOCODE_API_KEY;
 const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 const TRAIL_API_KEY = process.env.TRAIL_API_KEY;
 const DATABASE = process.env.DATABASE;
+const cors = require('cors');
+app.use(cors());
 const superagent = require('superagent');
 const pg = require('pg');
 const { request, response } = require('express');
