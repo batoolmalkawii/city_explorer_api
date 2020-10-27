@@ -8,11 +8,11 @@ const PORT = process.env.PORT || 3000;
 const GEOCODE_API_KEY = process.env.GEOCODE_API_KEY;
 const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 const TRAIL_API_KEY = process.env.TRAIL_API_KEY;
-const DATABASE = process.env.DATABASE;
+const DATABASE_URL = process.env.DATABASE_URL;
 const superagent = require('superagent');
 const pg = require('pg');
 const { request, response } = require('express');
-const client = new pg.Client(DATABASE);
+const client = new pg.Client(DATABASE_URL);
 
 client.connect().then(() => {
   app.listen(PORT, () => console.log(`App is listening on port ${PORT}`));
