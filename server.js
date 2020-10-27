@@ -12,7 +12,7 @@ const DATABASE_URL = process.env.DATABASE_URL;
 const superagent = require('superagent');
 const pg = require('pg');
 const { request, response } = require('express');
-const client = new pg.Client(DATABASE);
+const client = new pg.Client(DATABASE_URL);
 
 client.connect().then(() => {
   app.listen(PORT, () => console.log(`App is listening on port ${PORT}`));
