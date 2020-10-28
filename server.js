@@ -60,11 +60,11 @@ function homePage(request, response) {
 
 function getLocation(request, response) {
   const city = request.query.city;
-  let selectLocation = 'SELECT * FROM location WHERE search_query = $1;';
+  let selectLocation = 'SELECT search_query, formatted_query, latitude, longitude FROM location WHERE search_query = $1;';
   let safeValuesSelect = [city];
   client.query(selectLocation, safeValuesSelect).then(result => {
     if (result.rows.length > 0) {
-      response.status(200).json(result.rows);
+      response.status(200).json(result.rows[0]);
     }
     else {
       const url = `https://eu1.locationiq.com/v1/search.php?key=${GEOCODE_API_KEY}&q=${city}&format=json`;
