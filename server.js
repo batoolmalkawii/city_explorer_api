@@ -3,16 +3,17 @@
 const express = require('express');
 const app = express();
 require('dotenv').config()
-const cors = require('cors');
+//const cors = require('cors');
 const PORT = process.env.PORT || 3000;
 const GEOCODE_API_KEY = process.env.GEOCODE_API_KEY;
 const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 const TRAIL_API_KEY = process.env.TRAIL_API_KEY;
-const DATABASE_URL = process.env.DATABASE_URL;
+const DATABASE = process.env.DATABASE;
 const superagent = require('superagent');
 const pg = require('pg');
 const { request, response } = require('express');
-const client = new pg.Client(DATABASE_URL);
+const client = new pg.Client(DATABASE);
+//app.use(cors());
 
 client.connect().then(() => {
   app.listen(PORT, () => console.log(`App is listening on port ${PORT}`));
@@ -25,7 +26,6 @@ app.get('/location', getLocation);
 app.get('/weather', getWeather);
 app.get('/trails', getTrails);
 app.use('*', getError);
-app.use(cors());
 
 function Location(city, locationData) {
   this.search_query = city;
