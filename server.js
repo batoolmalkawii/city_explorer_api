@@ -159,11 +159,16 @@ function getMovies(request, response) {
 }
 
 function getYelp(request, response) {
+  const currentPage = request.query.page;
+  const yelpPerPage = 5;
+  const start = (currentPage - 1) * yelpPerPage;
   const url = 'https://api.yelp.com/v3/businesses/search';
   const queryParams = {
     latitude: request.query.latitude,
     longitude: request.query.longitude,
-  };
+    offset: start,
+    limit: yelpPerPage 
+   };
   superagent.get(url).set('Authorization', `Bearer ${YELP_API_KEY}`).query(queryParams).then((yelpData) => {
     let yelp = [];
     console.log(yelpData.body.businesses);
