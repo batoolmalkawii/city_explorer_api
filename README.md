@@ -3,7 +3,7 @@
 **Author**: Batool Malkawi
 **Version**: 1.0.0 
 
-
+<!-- Lab 06 ----------------------------------->
 Number and name of feature: 1. Repository Set Up
 Estimate of time needed to complete: 15min
 
@@ -49,7 +49,7 @@ Finish time: 3:05pm
 
 Actual time needed to complete: 10min
 <!-- -->
-
+<!-- Lab 07 ----------------------------------->
 Number and name of feature: 1. Data Formatting
 Estimate of time needed to complete: 15min
 
@@ -96,7 +96,7 @@ Finish time: 9:00pm
 Actual time needed to complete: 30min
 <!-- -->
 <!-- -->
-
+<!-- Lab 08 ----------------------------------->
 Number and name of feature: 1. Database
 Estimate of time needed to complete: 15min
 
@@ -130,3 +130,39 @@ Finish time: 4:00pm.
 
 Actual time needed to complete: 15min
 <!-- -->
+<!-- -->
+<!-- Lab 09 ----------------------------------->
+Number and name of feature: 1. Movies
+Estimate of time needed to complete: 30min
+
+Start time: 2:00pm
+
+Finish time: 2:45pm
+
+Actual time needed to complete: 45min
+<!-- -->
+
+<!-- -->
+Number and name of feature: 2. Yelp
+
+Estimate of time needed to complete: 30min
+
+Start time: 2:45pm
+
+Finish time: 3:00pm
+
+Actual time needed to complete: 15min
+<!-- -->
+
+<!-- -->
+Number and name of feature: 3. Pagination
+
+Estimate of time needed to complete: 30min
+
+Start time: 3:00pm
+
+Finish time: 4:30pm.
+
+Actual time needed to complete: 30min
+<!-- -->
+
