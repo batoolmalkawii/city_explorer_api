@@ -9,6 +9,7 @@ const GEOCODE_API_KEY = process.env.GEOCODE_API_KEY;
 const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 const TRAIL_API_KEY = process.env.TRAIL_API_KEY;
 const MOVIE_API_KEY = process.env.MOVIE_API_KEY;
+const YELP_API_KEY = process.env.YELP_API_KEY;
 const DATABASE_URL = process.env.DATABASE_URL;
 const superagent = require('superagent');
 const pg = require('pg');
@@ -27,6 +28,7 @@ app.get('/location', getLocation);
 app.get('/weather', getWeather);
 app.get('/trails', getTrails);
 app.get('/movies', getMovies);
+app.get('/yelp', getYelp);
 app.use('*', getError);
 
 function Location(city, locationData) {
@@ -55,23 +57,27 @@ function Trail(trailsData) {
   this.condition_time = conditionsInfo[1];
 }
 
-function Movies (moviesData) {
+function Movies(moviesData) {
   this.title = moviesData.title;
   this.overview = moviesData.overview;
   this.average_votes = moviesData.vote_average;
   this.total_votes = moviesData.vote_count;
   this.image_url = `https://image.tmdb.org/t/p/w500/${moviesData.poster_path}`;
   this.popularity = moviesData.popularity;
-  this.released_on= moviesData.release_date;
-  console.log(this.title);
-  console.log(this.overview);
-  console.log(this.average_votes);
-  console.log(this.total_votes);
+  this.released_on = moviesData.release_date;
+}
+
+function Yelp(yelpData) {
+  this.name = yelpData.name;
+  this.image_url = yelpData.image_url;
+  this.price = yelpData.price;
+  this.rating = yelpData.rating;
+  this.url = yelpData.url;
+  console.log(this.name);
   console.log(this.image_url);
-  console.log(this.popularity);
-  console.log(this.released_on);
-
-
+  console.log(this.price);
+  console.log(this.rating);
+  console.log(this.url);
 }
 
 function homePage(request, response) {
@@ -140,11 +146,9 @@ function getTrails(request, response) {
 
 function getMovies(request, response) {
   const city = request.query.search_query;
-  console.log(city);
   const url = `https://api.themoviedb.org/3/search/movie/?api_key=${MOVIE_API_KEY}&query=${city}`;
   let movies = [];
   superagent.get(url).then(moviesData => {
-    console.log(moviesData.body.results);
     movies = moviesData.body.results.map((value, index) => {
       return (new Movies(value));
     });
@@ -154,6 +158,23 @@ function getMovies(request, response) {
   })
 }
 
+function getYelp(request, response) {
+  const url = 'https://api.yelp.com/v3/businesses/search';
+  const queryParams = {
+    latitude: request.query.latitude,
+    longitude: request.query.longitude,
+  };
+  superagent.get(url).set('Authorization', `Bearer ${YELP_API_KEY}`).query(queryParams).then((yelpData) => {
+    let yelp = [];
+    console.log(yelpData.body.businesses);
+    yelp = yelpData.body.businesses.map((value, index) => {
+      return (new Yelp(value));
+    });
+    response.json(yelp);
+  }).catch(() => {
+    response.status(500).send('Something Went Wrong');
+  })
+}
 function getError(request, response) {
   response.status(404).send('Not found');
 }
